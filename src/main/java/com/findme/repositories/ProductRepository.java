@@ -24,7 +24,7 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
     default public void customize(QuerydslBindings bindings, QProduct root) {
         bindings.bind(String.class).first(
                 (StringPath path, String value) -> path.containsIgnoreCase(value));
-       // bindings.bind(root.modifiedDate).first((path, value) -> path.contains(value));
+        bindings.bind(root.modifiedDate).first((path, value) -> path.goe(value));
                 
         
         
